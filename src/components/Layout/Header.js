@@ -14,9 +14,11 @@ const Header = (props) => {
             <header className={classes.header}>
                 <h1>DibbyMeals</h1>
                 
-                <HeaderCartButton
-                    onClick={props.onShowCart}
-                />
+                {!props.onOrderProcess && (
+                    <HeaderCartButton
+                        onClick={props.onShowCart}
+                    />
+                )}
             </header>
 
             <div>

@@ -55,13 +55,19 @@ const Cart = (props) => {
 
                 <div className={classes.actions}>
                     <button
-                        className={classes["button--all"]}
                         onClick={props.onClose}
+                        className={classes["button--all"]}
                     >
                         Close
                     </button>
 
-                    {hasItems && <button className={classes.button}>Order</button>}
+                    {hasItems && (
+                        <button
+                            className={classes.button}
+                            onClick={props.onOrderProcess}
+                        >
+                            Order
+                        </button>)}
                 </div>
             </Modal>
         </>
