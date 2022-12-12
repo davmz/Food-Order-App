@@ -1,34 +1,8 @@
 import MealItem from "./MealItem/MealItem.js";
 
 import Card from "../UI/Card.js";
+import { DUMMY_MEALS } from "./dummy-meals.js";
 import classes from "./AvailableMeals.module.css";
-
-const DUMMY_MEALS = [
-    {
-        id: 'm1',
-        name: 'Sushi',
-        description: 'Finest fish and veggies',
-        price: 22.99,
-    },
-    {
-        id: 'm2',
-        name: 'Schnitzel',
-        description: 'A german specialty!',
-        price: 16.5,
-    },
-    {
-        id: 'm3',
-        name: 'Barbecue Burger',
-        description: 'American, raw, meaty',
-        price: 12.99,
-    },
-    {
-        id: 'm4',
-        name: 'Green Bowl',
-        description: 'Healthy...and green...',
-        price: 18.99,
-    },
-];
 
 /**
  * Returns the Available Meals component.
@@ -41,6 +15,7 @@ const AvailableMeals = () => {
             id={meal.id}
             key={meal.id}
             name={meal.name}
+            image={meal.src}
             price={meal.price}
             description={meal.description}
         />

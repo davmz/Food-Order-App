@@ -25,7 +25,7 @@ const App = () => {
           onShowCart={showCartHandler}
         />
 
-        <main>
+        <main>        
           <Meals />
         </main>
       </CartProvider>
