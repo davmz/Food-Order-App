@@ -9,10 +9,19 @@ import mealsImage from "../../assets/meals.jpg";
  * @returns The Header component.
  */
 const Header = (props) => {
+    function refreshPage() {
+        window.location.reload(false);
+    }
+
     return (
         <>
             <header className={classes.header}>
-                <h1>DibbyMeals</h1>
+                <h1
+                    onClick={refreshPage}
+                    style={{cursor: "pointer"}}
+                >
+                    DibbyMeals
+                </h1>
                 
                 {!props.onOrderProcess && (
                     <HeaderCartButton

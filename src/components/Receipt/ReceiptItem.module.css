@@ -1,0 +1,47 @@
+.cart-item {
+    display: flex;
+    margin: 1rem 0;
+    padding: 1rem 0;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid #8a2b06;
+}
+
+    .itemInfo {
+        width: 100%;
+        display: flex;
+    }
+
+            .cart-item h3 {
+                color: #363636;
+                margin: 0 0 0.5rem 0;
+            }
+
+            .summary {
+                width: 10rem;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+                .price {
+                    color: #8a2b06;
+                    font-weight: bold;
+                }
+
+                .amount {
+                    font-weight: bold;
+                    border-radius: 6px;
+                    color: #363636;
+                    border: 1px solid #ccc;
+                    padding: 0.25rem 0.75rem;
+                }
+
+        .totalItemPrice {
+            margin-left: auto;
+            padding-top: 2vh;
+        }
+
+            .totalItemPrice span {
+                font-weight: bold;
+            }

@@ -1,6 +1,10 @@
+import React, { useContext } from "react";
+
 import Card from "../UI/Card.js";
+import CartContext from "../../store/cart-context.js";
 
 import classes from "./Receipt.module.css";
+import ReceiptItem from "./ReceiptItem.js";
 
 /**
  * Returns the Receipt component.
@@ -8,26 +12,40 @@ import classes from "./Receipt.module.css";
  * @returns The Receipt component.
  */
 const Receipt = (props) => {
+    const cartCtx = useContext(CartContext);
+
+    const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
+
+    function refreshPage() {
+        window.location.reload(false);
+    }
+
     return (
         <>
             <section className={classes.order}>
                 <Card>
                     <h2>Order Complete</h2>
                     <p>
-                        In ut nostrud irure mollit amet enim Lorem occaecat
-                        pariatur officia et duis cupidatat proident.
+                        Your order has been processed.
                     </p>
-                    
-                    {/* List out all of the items */}
-                    {/* NEED name, amount, price of each item(s) */}
 
+                    {cartCtx.items.map((item) => (
+                        <ReceiptItem
+                            key={item.id}
+                            name={item.name}
+                            price={item.price}
+                            amount={item.amount}
+                        />
+                    ))}
 
-                    <div>
-                        <p>Total Amount: </p>
-                        <p>$40.00</p>
+                    <div className={classes.total}>
+                        <span>Total Amount</span>
+                        <span>{totalAmount}</span>
                     </div>
 
-                    <button>
+                    <button
+                        onClick={refreshPage}
+                    >
                         Make Another Purchase
                     </button>
                 </Card>
