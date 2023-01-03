@@ -13,11 +13,17 @@ import classes from "./AvailableMeals.module.css";
  */
 const AvailableMeals = () => {
     const [meals, setMeals] = useState([]);
+    const [httpError, setHttpError] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const fetchMeals = async() => {
             const reponse = await fetch("https://udemy-react-http-7113e-default-rtdb.firebaseio.com/meals.json");
+
+            if (!reponse.ok) {
+                throw new Error("Something went wrong!");
+            }
+
             const responseData = await reponse.json();
 
             const loadedMeals = [];
@@ -36,7 +42,10 @@ const AvailableMeals = () => {
             setIsLoading(false);
         };
 
-        fetchMeals();
+        fetchMeals().catch((error) => {
+            setIsLoading(false);
+            setHttpError(error.message);
+        });
     }, []);
 
     if (isLoading) {
@@ -47,6 +56,16 @@ const AvailableMeals = () => {
                 </section>
             </>
         );
+    }
+
+    if (httpError) {
+        return (
+            <>
+                <section className={classes.MealsError}>
+                    <p>{httpError}</p>
+                </section>
+            </>
+        )
     }
 
     const mealsList = meals.map((meal) => (
