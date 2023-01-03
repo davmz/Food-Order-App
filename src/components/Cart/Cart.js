@@ -56,7 +56,7 @@ const Cart = (props) => {
                 <div className={classes.actions}>
                     <button
                         onClick={props.onClose}
-                        className={classes["button--all"]}
+                        className={classes.button}
                     >
                         Close
                     </button>
